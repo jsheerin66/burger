@@ -1,5 +1,3 @@
-// what is sleepy? i changed all cat to burger
-
 var express = require("express");
 
 var router = express.Router();
@@ -18,11 +16,12 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/", function(req, res) {
+router.post("/api/burgers", function(req, res) {
   burger.create([
-    "name", "sleepy"
+    "burger_name", "devoured"
   ], [
-    req.body.name, req.body.sleepy
+    req.body.burger_name,
+    false
   ], function() {
     res.redirect("/");
   });
@@ -34,7 +33,7 @@ router.put("/:id", function(req, res) {
   console.log("condition", condition);
 
   burger.update({
-    sleepy: req.body.sleepy
+    devoured: req.body.devoured
   }, condition, function() {
     res.redirect("/");
   });
